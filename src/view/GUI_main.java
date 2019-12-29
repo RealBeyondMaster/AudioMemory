@@ -1,4 +1,5 @@
 package view;
+import controller.ButtonController;
 
 import java.io.IOException;
 
@@ -7,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 public class GUI_main extends Application {
@@ -44,11 +46,14 @@ public class GUI_main extends Application {
 
 	}
 
+	
+	// Hier muss noch eine For schleife, die alle 16 objekte erstellt. Einmal 8 Objekte, die dann nochmals kopiert wird, was 16 ergibt.
 	private void showButtons() throws IOException {
-
+		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("Buttons.fxml"));
-		GridPane buttons = loader.load();
+		//for (i=0 )
+		FlowPane buttons = loader.load();
 		mainLayout.setCenter(buttons);
 
 	}
@@ -58,5 +63,12 @@ public class GUI_main extends Application {
 		launch(args);
 
 	}
+	
+	public void newGame() {
+		this.primaryStage.show();
+		
+	}
+	
+	
 
 }
