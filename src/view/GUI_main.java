@@ -1,15 +1,15 @@
 package view;
-import controller.ButtonController;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import model.ButtonGame;
 
 public class GUI_main extends Application {
 
@@ -45,16 +45,54 @@ public class GUI_main extends Application {
 		primaryStage.show();
 
 	}
+// mark 30.12.19
+//	private Parent createContent() {
+//		Pane root = new Pane();
+//		root.setPrefSize(600, 600);
+//		return root;
+//	}	
 
-	
-	// Hier muss noch eine For schleife, die alle 16 objekte erstellt. Einmal 8 Objekte, die dann nochmals kopiert wird, was 16 ergibt.
-	private void showButtons() throws IOException {
-		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("Buttons.fxml"));
-		//for (i=0 )
-		FlowPane buttons = loader.load();
-		mainLayout.setCenter(buttons);
+	// Hier muss noch eine For schleife, die alle 16 objekte erstellt. Einmal 8
+	// Objekte, die dann nochmals kopiert wird, was 16 ergibt.
+
+	// mark 30.12.19, mit einer Schleife 2x8 buttons (pro button ein anderer
+	// tonepitch), ergibt 16 buttons
+	public void showButtons() {
+
+		int buttonsToAdd[] = new int[16];
+		for (int i = 0; i < 8; i++) {
+			buttonsToAdd[2 * i] = i;
+			buttonsToAdd[2 * i + 1] = i;
+		}
+		randomizeButtonArray(buttonsToAdd);
+
+		for (int i = 0; i < buttonsToAdd.length; i++) {
+			int tonhoehe = buttonsToAdd[i]; // Ausdruck tonhoehe zu tonepitch ändern
+			ButtonGame newButton = new ButtonGame(controller, tonhoehe, faceUp, faceDown);
+			Scene.add(newButton); // Snene ist falsch, muss das Buttonfeld darstellen/generieren
+		}
+		return Scene;
+	}
+
+	private void randomizeButtonArray(int[] t) {
+		Random randomizer = new Random();
+		for (int i = 0; i < t.length; i++) {
+			int d = randomizer.nextInt(t.length);
+			int s = t[d];
+			t[d] = t[i];
+			t[i] = s;
+
+		}
+
+	}
+
+//	private void showButtons() throws IOException {
+//
+//		FXMLLoader loader = new FXMLLoader();
+//		loader.setLocation(getClass().getResource("Buttons.fxml"));
+//		// for (i=0 )
+//		FlowPane buttons = loader.load();
+//		mainLayout.setCenter(buttons);
 
 	}
 
@@ -63,12 +101,10 @@ public class GUI_main extends Application {
 		launch(args);
 
 	}
-	
+
 	public void newGame() {
 		this.primaryStage.show();
-		
+
 	}
-	
-	
 
 }
