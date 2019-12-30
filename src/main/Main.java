@@ -1,19 +1,22 @@
 package main;
-import view.GUI;
-
 import javafx.application.Application;
-import javafx.stage.Stage;
+import view.GUI_main;
+
+
 
 //StartPunkt
-public class Main extends Application {
+public class Main {
 
 
 	
-		@Override
-		public void start(Stage primaryStage) throws Exception {
-			// TODO Auto-generated method stub
-			GUI newGame = new GUI();
-			newGame.startNewGame();
+		//starte Spiel
+		public void main(String[] args) throws Exception {
+			
+			GUI_main newGame = new GUI_main();
+			Application.launch(newGame.getClass(), args);
+			
+			
+
 			
 		}
 		
