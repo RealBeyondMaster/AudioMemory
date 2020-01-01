@@ -1,8 +1,10 @@
 package view;
 
+import controller.ButtonController;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Random;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,6 +36,7 @@ public class GUI_main extends Application {
 			e.printStackTrace();
 		}
 		Scene scene = new Scene(mainLayout);
+		mainLayout.setCenter(showButtons());
 		// scene.setCursor(Cursor.HAND); aendert Cursor zu einer Hand
 		// Image image = new Image("Bildschirmfoto%202019-11-28%20um%2010.23.47.png");
 		// // pass in the image path
@@ -57,7 +60,7 @@ public class GUI_main extends Application {
 
 	// mark 30.12.19, mit einer Schleife 2x8 buttons (pro button ein anderer
 	// tonepitch), ergibt 16 buttons
-	public void showButtons() {
+	public FlowPane showButtons() {
 
 		int buttonsToAdd[] = new int[16];
 		for (int i = 0; i < 8; i++) {
@@ -65,13 +68,23 @@ public class GUI_main extends Application {
 			buttonsToAdd[2 * i + 1] = i;
 		}
 		randomizeButtonArray(buttonsToAdd);
-
+		FlowPane flowpaneButtons = new FlowPane();
+		ButtonController controller = new ButtonController(); 
+		
 		for (int i = 0; i < buttonsToAdd.length; i++) {
 			int tonhoehe = buttonsToAdd[i]; // Ausdruck tonhoehe zu tonepitch ändern
-			ButtonGame newButton = new ButtonGame(controller, tonhoehe, faceUp, faceDown);
-			Scene.add(newButton); // Snene ist falsch, muss das Buttonfeld darstellen/generieren
+
+			try {
+				ButtonGame newButton = new ButtonGame(controller, tonhoehe);
+				flowpaneButtons.getChildren().addAll(newButton);  // Snene ist falsch, muss das Buttonfeld darstellen/generieren
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		}
-		return Scene;
+		return flowpaneButtons;
 	}
 
 	private void randomizeButtonArray(int[] t) {
@@ -94,7 +107,7 @@ public class GUI_main extends Application {
 //		FlowPane buttons = loader.load();
 //		mainLayout.setCenter(buttons);
 
-	}
+	
 
 	public static void main(String[] args) {
 

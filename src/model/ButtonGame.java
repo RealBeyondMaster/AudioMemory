@@ -2,19 +2,20 @@ package model;
 
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
+
 
 import controller.ButtonController;
-import javafx.application.Application;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ButtonGame {
+public class ButtonGame extends Button {
 
 	int tonhoehe;
 	Image faceUp;
@@ -26,13 +27,14 @@ public class ButtonGame {
 	
 	
 	//Konstruktor
-	public ButtonGame(ButtonController controller, int tonhoehe, Image faceUp, Image faceDown)
+	public ButtonGame(ButtonController controller, int tonhoehe) throws FileNotFoundException
 								{
 		Button b = new Button();
 		this.tonhoehe = tonhoehe;
-		this.faceUp = faceUp;
-		this.faceDown = faceDown;
+		this.faceUp = new Image("/image_play.png");
+		this.faceDown = new Image("/image_stop.png");
 		this.now = faceDown;
+		this.buttonStatus = false;
 		setOnAction(new ButtonListener());
 							      };  
 		
@@ -53,7 +55,7 @@ public class ButtonGame {
 		if (this.buttonStatus) return;
 		else  {
 				this.setImage(this.faceUp);
-				this.playMidiPlayer();
+				//this.playMidiPlayer();
 									}
 							}
 	
@@ -70,11 +72,11 @@ public class ButtonGame {
 	EventHandler<MouseEvent> cardClicked = new EventHandler<MouseEvent>() { 
         @Override 
         public void handle(MouseEvent event) { 
-            this.turnUp();
+            turnUp();
            									}						
 																			}; 
 	
-	
+       //Get tonHohe Methode																		
 	   public int  getTonhoehe() {
 	    	  return tonhoehe;
 	    	  
@@ -95,14 +97,16 @@ public class ButtonGame {
 				if (buttonStatus) return;
 				else  {
 						setImage(faceUp);
-						playMidiPlayer();
+					//	playMidiPlayer();
 						}	
 													}
 
-			private void setImage(Image faceUp) {
-				// TODO Auto-generated method stub
-				this.
-			}
+
 		}
+				//Funktion um Bild zu wechselb
+				public void setImage(Image newState) {
+						this.now = newState;
+											}
+
 		
 }
