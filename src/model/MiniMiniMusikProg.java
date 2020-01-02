@@ -14,17 +14,12 @@ public class MiniMiniMusikProg {
 	// Tonhöhe
 	int pitch = 120;
 
-	//Konstruktor
-		public MiniMiniMusikProg()
-	{
-			
-			
-		
+	// Konstruktor
+	public MiniMiniMusikProg() {
+
 	}
-		
-		
-		
-	public  void player(int tonePitch) {
+
+	public void player(int tonePitch) {
 		try {
 
 			Sequencer player = MidiSystem.getSequencer();
@@ -43,7 +38,8 @@ public class MiniMiniMusikProg {
 			ShortMessage a = new ShortMessage();
 
 			// a.setMessage(192, 1, 35, 0);// Möglichkeit, zum Instrumenten-Wechsel
-			a.setMessage(144, 1, tonePitch, 70);// Message-Tup(hier Note-On), Kanal, zu spielender Ton, Anschlaglautstärte
+			a.setMessage(144, 1, tonePitch, 70);// Message-Tup(hier Note-On), Kanal, zu spielender Ton,
+												// Anschlaglautstärte
 
 			MidiEvent noteOn = new MidiEvent(a, 1);
 			track.add(noteOn);
@@ -65,8 +61,7 @@ public class MiniMiniMusikProg {
 
 	}
 	// diesen Text habe ich heute, 20. 11.19, gepusht
-	//public static void main(String[] args) {
-		//MiniMiniMusikProg mini = new MiniMiniMusikProg();
-		//mini.player(60);
-	}
-
+	// public static void main(String[] args) {
+	// MiniMiniMusikProg mini = new MiniMiniMusikProg();
+	// mini.player(60);
+}

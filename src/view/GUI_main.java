@@ -1,10 +1,11 @@
 package view;
 
-import controller.ButtonController;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
+
+import controller.ButtonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import model.ButtonGame;
+import model.RandomGen;
 
 public class GUI_main extends Application {
 
@@ -42,7 +44,7 @@ public class GUI_main extends Application {
 		// // pass in the image path
 		// scene.setCursor(new ImageCursor(image));
 
-		//scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
+		// scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -69,26 +71,31 @@ public class GUI_main extends Application {
 		}
 		randomizeButtonArray(buttonsToAdd);
 		FlowPane flowpaneButtons = new FlowPane();
-		ButtonController controller = new ButtonController(); 
+		ButtonController controller = new ButtonController();
 
-		
+		// Generiere die 8 Tonhöhen zufällig, und dies zweimal
+		RandomGen random = new RandomGen();
+		ArrayList<Integer> row1 = random.orderTonePitch();
+		ArrayList<Integer> rowTotal = new ArrayList<>();
+		rowTotal.addAll(row1);
+		rowTotal.addAll(row1);
+
 		for (int i = 0; i < buttonsToAdd.length; i++) {
-			int tonhoehe = buttonsToAdd[i]; // Ausdruck tonhoehe zu tonepitch ändern
+			int tonePitch = rowTotal.get(i); // Ausdruck tonhoehe zu tonepitch ändern
 
 			try {
-				ButtonGame newButton = new ButtonGame(controller, tonhoehe);
-				
-	
-				flowpaneButtons.getChildren().addAll(newButton);  // Snene ist falsch, muss das Buttonfeld darstellen/generieren
-				//int btnCount = flowpaneButtons.getChildren().size();
-				//flowpaneButtons.getChildren().bind(flowpaneButtons.widthProperty().divide(btnCount));
-			
+				ButtonGame newButton = new ButtonGame(controller, tonePitch);
+
+				flowpaneButtons.getChildren().addAll(newButton); // Snene ist falsch, muss das Buttonfeld
+																	// darstellen/generieren
+				// int btnCount = flowpaneButtons.getChildren().size();
+				// flowpaneButtons.getChildren().bind(flowpaneButtons.widthProperty().divide(btnCount));
+
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
+
 		}
 
 		return flowpaneButtons;
@@ -113,8 +120,6 @@ public class GUI_main extends Application {
 //		// for (i=0 )
 //		FlowPane buttons = loader.load();
 //		mainLayout.setCenter(buttons);
-
-	
 
 	public static void main(String[] args) {
 
