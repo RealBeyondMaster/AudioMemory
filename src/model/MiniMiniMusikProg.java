@@ -51,7 +51,7 @@ public class MiniMiniMusikProg {
 
 			player.setSequence(seq);
 			player.start();
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			player.close();
 
 		} catch (Exception ex) {

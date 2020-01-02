@@ -2,11 +2,6 @@ package controller;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import model.ButtonGame;
 

@@ -4,6 +4,7 @@ package model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 import controller.ButtonController;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
+import javafx.scene.image.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
@@ -20,6 +21,7 @@ public class ButtonGame extends Button {
 	int tonhoehe;
 	Image faceUp;
 	Image faceDown;
+	ImageView front, back;
 	Image now;
 		//button schon angeklickt oder nicht
 	boolean buttonStatus = false;
@@ -29,12 +31,30 @@ public class ButtonGame extends Button {
 	//Konstruktor
 	public ButtonGame(ButtonController controller, int tonhoehe) throws FileNotFoundException
 								{
-		Button b = new Button();
+		
 		this.tonhoehe = tonhoehe;
-		this.faceUp = new Image("/image_play.png");
-		this.faceDown = new Image("/image_stop.png");
-		this.now = faceDown;
+		InputStream input = getClass().getResourceAsStream("/image_ok.png");
+		
+		Image image = new Image(input);
+		//ImageView b = new ImageView(input);
+		
+		//back = new ImageView(String.valueOf(getClass().getResource("image_play.png")));
+        
+		
+		
+		Button b = new Button("play",new ImageView(image));
+		//b.setGraphic(b);
+		
+		//Button b = new Button("", new ImageView(image));
+		
+		//ImageView b = new ImageView(getClass().getResource("/res/image_play.png").toExternalForm());
+		//b.setGraphic(new ImageView(image));
+		//this.faceUp = new Image("image_play.png",100, 100, false, false);
+		//this.faceDown = new Image("image_stop.png",100, 100, false, false);
+		//this.now = faceDown;
 		this.buttonStatus = false;
+		//b.setPrefSize(400,400);
+		
 		setOnAction(new ButtonListener());
 							      };  
 		

@@ -35,14 +35,14 @@ public class GUI_main extends Application {
 
 			e.printStackTrace();
 		}
-		Scene scene = new Scene(mainLayout);
 		mainLayout.setCenter(showButtons());
+		Scene scene = new Scene(mainLayout);
 		// scene.setCursor(Cursor.HAND); aendert Cursor zu einer Hand
 		// Image image = new Image("Bildschirmfoto%202019-11-28%20um%2010.23.47.png");
 		// // pass in the image path
 		// scene.setCursor(new ImageCursor(image));
 
-		scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
+		//scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
