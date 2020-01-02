@@ -1,8 +1,8 @@
 package model;
+import model.MiniMiniMusikProg;
 
 
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Collections;
@@ -18,32 +18,37 @@ import javafx.event.EventHandler;
 
 public class ButtonGame extends Button {
 
-	int tonhoehe;
+	int tonePitch;
 	Image faceUp;
 	Image faceDown;
 	ImageView front, back;
 	Image now;
-		//button schon angeklickt oder nicht
+	
+	//button schon angeklickt oder nicht
 	boolean buttonStatus = false;
+	
+	//Midiplayer
+	MiniMiniMusikProg player = new MiniMiniMusikProg();
 	
 	
 	
 	//Konstruktor
-	public ButtonGame(ButtonController controller, int tonhoehe) throws FileNotFoundException
+	public ButtonGame(ButtonController controller, int tonePitch) throws FileNotFoundException
 								{
-		
-		this.tonhoehe = tonhoehe;
-		InputStream input = getClass().getResourceAsStream("/image_ok.png");
-		
-		Image image = new Image(input);
 		//ImageView b = new ImageView(input);
 		
-		//back = new ImageView(String.valueOf(getClass().getResource("image_play.png")));
-        
+		//back = new ImageView(String.valueOf(getClass().getResource("image_play.png")));	
+		this.tonePitch = tonePitch;
+		InputStream input = getClass().getResourceAsStream("/image_play.png");
+		
+		//setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute Qualität oder nicht 
+		Image image = new Image(input, 70, 70, false, true);
+
+
 		
 		
-		Button b = new Button("play",new ImageView(image));
-		//b.setGraphic(b);
+		//Button b = new Button("play");
+		setGraphic(new ImageView(image));
 		
 		//Button b = new Button("", new ImageView(image));
 		
@@ -53,7 +58,8 @@ public class ButtonGame extends Button {
 		//this.faceDown = new Image("image_stop.png",100, 100, false, false);
 		//this.now = faceDown;
 		this.buttonStatus = false;
-		//b.setPrefSize(400,400);
+
+
 		
 		setOnAction(new ButtonListener());
 							      };  
@@ -75,7 +81,7 @@ public class ButtonGame extends Button {
 		if (this.buttonStatus) return;
 		else  {
 				this.setImage(this.faceUp);
-				//this.playMidiPlayer();
+				player.player (this.getPitch());
 									}
 							}
 	
@@ -97,16 +103,16 @@ public class ButtonGame extends Button {
 																			}; 
 	
        //Get tonHohe Methode																		
-	   public int  getTonhoehe() {
-	    	  return tonhoehe;
+	   public int  getPitch() {
+	    	  return tonePitch;
 	    	  
 	      									}
 	   
 		//zufällige Verteilung der Button-Objekte
-		private List<Integer> randomizeButtons(List<Integer> tonhoehe) {
-			Collections.shuffle(tonhoehe);
+		private List<Integer> randomizeButtons(List<Integer> tonePitch) {
+			Collections.shuffle(tonePitch);
 			
-			return tonhoehe;											}
+			return tonePitch;											}
 			
 		class ButtonListener implements EventHandler<ActionEvent>
 		{
@@ -117,7 +123,7 @@ public class ButtonGame extends Button {
 				if (buttonStatus) return;
 				else  {
 						setImage(faceUp);
-					//	playMidiPlayer();
+					player.player(this.getPitch());
 						}	
 													}
 

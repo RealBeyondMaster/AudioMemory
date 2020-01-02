@@ -70,13 +70,19 @@ public class GUI_main extends Application {
 		randomizeButtonArray(buttonsToAdd);
 		FlowPane flowpaneButtons = new FlowPane();
 		ButtonController controller = new ButtonController(); 
+
 		
 		for (int i = 0; i < buttonsToAdd.length; i++) {
 			int tonhoehe = buttonsToAdd[i]; // Ausdruck tonhoehe zu tonepitch ändern
 
 			try {
 				ButtonGame newButton = new ButtonGame(controller, tonhoehe);
+				
+	
 				flowpaneButtons.getChildren().addAll(newButton);  // Snene ist falsch, muss das Buttonfeld darstellen/generieren
+				//int btnCount = flowpaneButtons.getChildren().size();
+				//flowpaneButtons.getChildren().bind(flowpaneButtons.widthProperty().divide(btnCount));
+			
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,6 +90,7 @@ public class GUI_main extends Application {
 			
 			
 		}
+
 		return flowpaneButtons;
 	}
 
