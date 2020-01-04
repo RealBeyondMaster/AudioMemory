@@ -15,6 +15,7 @@ public class ButtonGame extends Button {
 	private int tonePitch;
 	private Image faceUp;
 	private Image faceDown;
+	private Image play2;
 	private ButtonController controller;
 
 	// button schon angeklickt oder nicht
@@ -32,7 +33,7 @@ public class ButtonGame extends Button {
 		this.tonePitch = tonePitch;
 		InputStream play = getClass().getResourceAsStream("/image_play.png");
 		InputStream stop = getClass().getResourceAsStream("/image_stop.png");
-		InputStream ok = getClass().getResourceAsStream("/image_ok.png");
+		InputStream play2 = getClass().getResourceAsStream("/image_play2.png");
 
 		// setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute
 		// Qualität oder nicht
@@ -44,6 +45,7 @@ public class ButtonGame extends Button {
 
 		this.faceUp = new Image(play, 70, 70, false, true);
 		this.faceDown = new Image(stop, 70, 70, false, true);
+		this.play2 = new Image(play2, 70, 70, false, true);
 		this.buttonStatus = false;
 		this.controller = controller;
 
@@ -57,20 +59,13 @@ public class ButtonGame extends Button {
 
 		player.player(this.getPitch());
 		System.out.println("turnup 1");
-		//this.setImage(this.faceDown);
-		this.buttonStatus = this.controller.turnUp(this);
+		// this.setImage(this.faceDown);
+		//this.buttonStatus = this.controller.turnUp(this);
+		this.controller.turnUp(this);
+		// if (this.buttonStatus) {
+		/// System.out.println("turnup 1");
+		// this.setImage(this.faceDown);
 
-	//	if (this.buttonStatus) {
-		///	System.out.println("turnup 1");
-			//this.setImage(this.faceDown);
-			
-		
-		
-		
-		 
-
-		
-		
 		return;
 
 	}
@@ -117,17 +112,16 @@ public class ButtonGame extends Button {
 	}
 
 	public void returnImagePlay() {
-		this.setImage(this.faceUp);
+		this.setImage(this.play2);
 		System.out.println("returnimagePlay");
-		//this.buttonStatus = false;
+		// this.buttonStatus = false;
 	}
-	
+
 	public void returnImageStop() {
 		this.setImage(this.faceDown);
 		System.out.println("returnimageStop");
-		//this.buttonStatus = false;
+		// this.buttonStatus = false;
 	}
-
 
 	// buttonStatus setzten
 	public void setbuttonStatus(boolean status) {

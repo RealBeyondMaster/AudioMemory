@@ -21,6 +21,7 @@ public class ButtonController {
 	// bei ButtonClick
 	public boolean turnUp(ButtonGame button) {
 		button.returnImageStop();
+		button.setbuttonStatus(true);
 		if (this.clickedButton.size() < 2)
 			return isMatchingPairs(button);
 		else
@@ -42,13 +43,14 @@ public class ButtonController {
 			}
 
 			else {
+				System.out.println("ismatchingspairs ist ungleich 2");
 			 clickedButton.get(0).setbuttonStatus(false);
 			 clickedButton.get(1).setbuttonStatus(false);
 
 				clickedButton.get(0).returnImagePlay();
 				clickedButton.get(1).returnImagePlay();
 				this.clickedButton.clear();
-				System.out.println("ismatchingspairs ist ungleich 2");
+	
 
 			}
 
