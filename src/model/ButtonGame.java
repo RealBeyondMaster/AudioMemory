@@ -56,21 +56,27 @@ public class ButtonGame extends Button {
 	public void turnUp() {
 
 		player.player(this.getPitch());
+		System.out.println("turnup 1");
+		//this.setImage(this.faceDown);
 		this.buttonStatus = this.controller.turnUp(this);
 
-		if (this.buttonStatus)
-			this.setImage(this.faceDown);
+	//	if (this.buttonStatus) {
+		///	System.out.println("turnup 1");
+			//this.setImage(this.faceDown);
+			
 		
+		
+		
+		 
 
-		if (!this.buttonStatus)
-			this.setImage(this.faceUp);
-
+		
+		
 		return;
 
 	}
 
 	public void turnDown() {
-
+		System.out.println("turdown 1");
 		this.setImage(this.faceUp);
 		this.buttonStatus = false;
 
@@ -107,12 +113,21 @@ public class ButtonGame extends Button {
 	// Funktion um Bild zu wechselb
 	public void setImage(Image newState) {
 		setGraphic(new ImageView(newState));
+		System.out.println("setimage methode");
 	}
 
-	public void returnImage() {
+	public void returnImagePlay() {
 		this.setImage(this.faceUp);
+		System.out.println("returnimagePlay");
 		//this.buttonStatus = false;
 	}
+	
+	public void returnImageStop() {
+		this.setImage(this.faceDown);
+		System.out.println("returnimageStop");
+		//this.buttonStatus = false;
+	}
+
 
 	// buttonStatus setzten
 	public void setbuttonStatus(boolean status) {

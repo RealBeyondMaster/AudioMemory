@@ -20,6 +20,7 @@ public class ButtonController {
 
 	// bei ButtonClick
 	public boolean turnUp(ButtonGame button) {
+		button.returnImageStop();
 		if (this.clickedButton.size() < 2)
 			return isMatchingPairs(button);
 		else
@@ -36,6 +37,7 @@ public class ButtonController {
 				clickedButton.get(0).setbuttonStatus(true);
 				clickedButton.get(1).setbuttonStatus(true);
 				this.clickedButton.clear();
+				System.out.println("ismatchingspairs ist gleich 2");
 
 			}
 
@@ -43,9 +45,10 @@ public class ButtonController {
 			 clickedButton.get(0).setbuttonStatus(false);
 			 clickedButton.get(1).setbuttonStatus(false);
 
-				clickedButton.get(0).returnImage();
-				clickedButton.get(1).returnImage();
+				clickedButton.get(0).returnImagePlay();
+				clickedButton.get(1).returnImagePlay();
 				this.clickedButton.clear();
+				System.out.println("ismatchingspairs ist ungleich 2");
 
 			}
 
