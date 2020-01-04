@@ -40,8 +40,8 @@ public class ButtonController {
 			}
 
 			else {
-				// clickedButton.get(0).setbuttonStatus(false);
-				// clickedButton.get(1).setbuttonStatus(false);
+			 clickedButton.get(0).setbuttonStatus(false);
+			 clickedButton.get(1).setbuttonStatus(false);
 
 				clickedButton.get(0).returnImage();
 				clickedButton.get(1).returnImage();
@@ -61,14 +61,15 @@ public class ButtonController {
 	 * this.clickedButton.get(i); button.turnDown(); } this.clickedButton.clear(); }
 	 */
 
-	public void handle(ActionEvent e) {
-		for (int i = 0; i < clickedButton.size(); i++) {
-			ButtonGame button = clickedButton.get(i);
-			button.turnDown();
-
-		}
-		this.clickedButton.clear();
-	};
+	
+/*	public void actionPerformed(ActionEvent event) {
+	*	for (int i = 0; i < clickedButton.size(); i++) {
+	*		ButtonGame button = clickedButton.get(i);
+	*		button.turnDown();
+*
+*		}
+*		this.clickedButton.clear();
+	};*/
 
 	// Zaehlt die Anzahl Clicks
 	public void clickCounter(MouseEvent arg0) {

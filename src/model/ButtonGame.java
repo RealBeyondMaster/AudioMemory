@@ -60,6 +60,10 @@ public class ButtonGame extends Button {
 
 		if (this.buttonStatus)
 			this.setImage(this.faceDown);
+		
+
+		if (!this.buttonStatus)
+			this.setImage(this.faceUp);
 
 		return;
 
@@ -106,8 +110,8 @@ public class ButtonGame extends Button {
 	}
 
 	public void returnImage() {
-		this.setImage(this.faceDown);
-		this.buttonStatus = true;
+		this.setImage(this.faceUp);
+		//this.buttonStatus = false;
 	}
 
 	// buttonStatus setzten
