@@ -2,8 +2,6 @@ package model;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.List;
 
 import controller.ButtonController;
 import javafx.event.ActionEvent;
@@ -11,15 +9,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 public class ButtonGame extends Button {
 
-	int tonePitch;
-	Image faceUp;
-	Image faceDown;
-	ImageView front, back;
-	Image now;
+	private int tonePitch;
+	private Image faceUp;
+	private Image faceDown;
+	private ButtonController controller;
 
 	// button schon angeklickt oder nicht
 	boolean buttonStatus = false;
@@ -34,73 +30,59 @@ public class ButtonGame extends Button {
 		// back = new
 		// ImageView(String.valueOf(getClass().getResource("image_play.png")));
 		this.tonePitch = tonePitch;
-		InputStream input = getClass().getResourceAsStream("/image_play.png");
+		InputStream play = getClass().getResourceAsStream("/image_play.png");
+		InputStream stop = getClass().getResourceAsStream("/image_stop.png");
+		InputStream ok = getClass().getResourceAsStream("/image_ok.png");
 
 		// setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute
 		// Qualität oder nicht
-		Image image = new Image(input, 70, 70, false, true);
+		Image playButton = new Image(play, 70, 70, false, true);
+		// Image stopButton = new Image(stop, 70, 70, false, true);
 
 		// Button b = new Button("play");
-		setGraphic(new ImageView(image));
+		setGraphic(new ImageView(playButton));
 
-		// Button b = new Button("", new ImageView(image));
-
-		// ImageView b = new
-		// ImageView(getClass().getResource("/res/image_play.png").toExternalForm());
-		// b.setGraphic(new ImageView(image));
-		// this.faceUp = new Image("image_play.png",100, 100, false, false);
-		// this.faceDown = new Image("image_stop.png",100, 100, false, false);
-		// this.now = faceDown;
+		this.faceUp = new Image(play, 70, 70, false, true);
+		this.faceDown = new Image(stop, 70, 70, false, true);
 		this.buttonStatus = false;
+		this.controller = controller;
 
 		setOnAction(new ButtonListener());
 	};
-
-	private void setOnAction(ButtonListener buttonListener) {
-		// TODO Auto-generated method stub
-
-	}
 
 	// bei Mausklick, checke ob bereits geklickt. Wenn ja, tue nichts. Wenn noch
 	// nicht geklickt
 	// ändere das Bild und spiele die Tonhoehe
 	public void turnUp() {
+
+		player.player(this.getPitch());
+		this.buttonStatus = this.controller.turnUp(this);
+
 		if (this.buttonStatus)
-			return;
-		else {
-			this.setImage(this.faceUp);
-			player.player(this.getPitch());
-		}
+			this.setImage(this.faceDown);
+
+		return;
+
 	}
 
 	public void turnDown() {
-		if (!this.buttonStatus)
-			return;
-		else {
-			this.setImage(this.faceDown);
-			this.buttonStatus = false;
-		}
+
+		this.setImage(this.faceUp);
+		this.buttonStatus = false;
+
 	}
 
-	// Eventhandler für Mausklicks
-	EventHandler<MouseEvent> cardClicked = new EventHandler<MouseEvent>() {
-		@Override
-		public void handle(MouseEvent event) {
-			turnUp();
-		}
-	};
+	/*
+	 * Eventhandler für Mausklicks EventHandler<MouseEvent> cardClicked = new
+	 * EventHandler<MouseEvent>() {
+	 * 
+	 * @Override public void handle(MouseEvent event) { turnUp(); } };
+	 */
 
-	// Get tonHohe Methode
+	// Get tonePitch Methode
 	public int getPitch() {
 		return tonePitch;
 
-	}
-
-	// zufällige Verteilung der Button-Objekte
-	private List<Integer> randomizeButtons(List<Integer> tonePitch) {
-		Collections.shuffle(tonePitch);
-
-		return tonePitch;
 	}
 
 	class ButtonListener implements EventHandler<ActionEvent> {
@@ -111,8 +93,8 @@ public class ButtonGame extends Button {
 			if (buttonStatus)
 				return;
 			else {
-				setImage(faceUp);
-				player.player(getPitch());
+				turnUp();
+				// buttonStatus = true;
 			}
 		}
 
@@ -120,7 +102,16 @@ public class ButtonGame extends Button {
 
 	// Funktion um Bild zu wechselb
 	public void setImage(Image newState) {
-		this.now = newState;
+		setGraphic(new ImageView(newState));
 	}
 
+	public void returnImage() {
+		this.setImage(this.faceDown);
+		this.buttonStatus = true;
+	}
+
+	// buttonStatus setzten
+	public void setbuttonStatus(boolean status) {
+		this.buttonStatus = status;
+	}
 }

@@ -30,7 +30,7 @@ public class RandomGen {
 	public ArrayList<Integer> orderTonePitch() {
 		for (int i = 0; i < 8; i++) {
 			Random randomGenerator = new Random();
-			int randomInt = randomGenerator.nextInt(120) + 60;
+			int randomInt = randomGenerator.nextInt(60) + 60;
 			orderTonePitch.add(randomInt);
 
 		}
