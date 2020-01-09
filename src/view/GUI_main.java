@@ -44,7 +44,7 @@ public class GUI_main extends Application {
 		// // pass in the image path
 		// scene.setCursor(new ImageCursor(image));
 
-		// scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
+		scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
