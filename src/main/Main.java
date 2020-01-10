@@ -7,7 +7,7 @@ import view.GUI_main;
 public class Main {
 
 	// starte Spiel
-	public void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
 
 		GUI_main newGame = new GUI_main();
 		Application.launch(newGame.getClass(), args);

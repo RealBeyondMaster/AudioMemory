@@ -30,7 +30,7 @@ public class GUI_main extends Application {
 
 	private void showMainView() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GUI_main.class.getResource("GUI.fxml"));
+		loader.setLocation(GUI_main.class.getResource("GUIRadio.fxml"));
 		try {
 			mainLayout = loader.load();
 		} catch (IOException e) {
@@ -44,7 +44,7 @@ public class GUI_main extends Application {
 		// // pass in the image path
 		// scene.setCursor(new ImageCursor(image));
 
-		scene.getStylesheets().add("StyleSheetMark.css"); // StyleSheet von Mark
+		scene.getStylesheets().add("StyleSheetMark2.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
