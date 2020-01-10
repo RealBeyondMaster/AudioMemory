@@ -1,5 +1,6 @@
- .root{
-     -fx-background-color: #F2F5A9;
+ 
+.root{
+     -fx-background-color: #A1B5B4;
 
      -fx-font-size: 12pt;
      -fx-font-family: "Ayuthya";
@@ -7,11 +8,11 @@
  }
 
 
- .label{
+.label{
      -fx-text-fill: #1c1b1b;
   }
 
- .menu{
+.menu{
 -fx-background-color: #D3B6A0;
 
 -fx-font-family: "Ayuthya";
@@ -20,16 +21,20 @@
 
 
 
- .button{
+.button{
 
--fx-background-radius: 1;
+-fx-background-radius: 50;
+     -fx-background-color: #AFC9C7;
 -fx-font-size: 5pt;
 
  }
 
- .text-area{
+.text-area{
      -fx-background-color: #F4EAEA;
      -fx-background-radius: 0;
   }
+  
+  
+  
 
 

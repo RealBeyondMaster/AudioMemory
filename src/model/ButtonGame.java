@@ -38,16 +38,22 @@ public class ButtonGame extends Button {
 		InputStream ok  = getClass().getResourceAsStream("/image_ok.png");
 		// setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute
 		// Qualität oder nicht
-		Image playButton = new Image(play, 70, 70, false, true);
+		Image playButton = new Image(play, 90, 90, false, true);
 		// Image stopButton = new Image(stop, 70, 70, false, true);
 
 		// Button b = new Button("play");
 		setGraphic(new ImageView(playButton));
 
+<<<<<<< HEAD
 		this.faceUp = new Image(play, 70, 70, false, true);
 		this.faceDown = new Image(stop, 70, 70, false, true);
 		this.play2 = new Image(play2, 70, 70, false, true);
 		this.ok = new Image(ok, 70, 70, false, true);
+=======
+		this.faceUp = new Image(play, 90, 90, false, true);
+		this.faceDown = new Image(stop, 90, 90, false, true);
+		this.play2 = new Image(play2, 90, 90, false, true);
+>>>>>>> refs/remotes/origin/Mark
 		this.buttonStatus = false;
 		this.controller = controller;
 
@@ -62,7 +68,7 @@ public class ButtonGame extends Button {
 		player.player(this.getPitch());
 		System.out.println("turnup 1");
 		// this.setImage(this.faceDown);
-		//this.buttonStatus = this.controller.turnUp(this);
+		// this.buttonStatus = this.controller.turnUp(this);
 		this.controller.turnUp(this);
 		// if (this.buttonStatus) {
 		/// System.out.println("turnup 1");

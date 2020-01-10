@@ -1,8 +1,9 @@
  .root{
      -fx-background-color: linear-gradient(#02ddf5, #f507d5);
+
      -fx-font-size: 12pt;
      -fx-font-family: "Ayuthya";
-     -fx-base: rgb(70, 30, 255);     
+     -fx-base: #F4EAEA;     
  }
 
 
@@ -11,7 +12,7 @@
   }
 
  .menu{
--fx-background-color: linear-gradient(#dc9556, #ab4642);
+-fx-background-color: #D3B6A0;
 
 -fx-font-family: "Ayuthya";
  }
@@ -21,14 +22,17 @@
 
  .button{
 
--fx-background-radius: 1;
+-fx-background-radius: 50;
+     -fx-background-color: #AFC9C7;
 -fx-font-size: 5pt;
 
  }
 
  .text-area{
-     -fx-background-color: blue;
+     -fx-background-color: #F4EAEA;
      -fx-background-radius: 0;
   }
+  
+  
 
 
