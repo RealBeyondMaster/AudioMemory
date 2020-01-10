@@ -44,16 +44,16 @@ public class ButtonGame extends Button {
 		// Button b = new Button("play");
 		setGraphic(new ImageView(playButton));
 
-<<<<<<< HEAD
-		this.faceUp = new Image(play, 70, 70, false, true);
-		this.faceDown = new Image(stop, 70, 70, false, true);
-		this.play2 = new Image(play2, 70, 70, false, true);
-		this.ok = new Image(ok, 70, 70, false, true);
-=======
+
 		this.faceUp = new Image(play, 90, 90, false, true);
 		this.faceDown = new Image(stop, 90, 90, false, true);
 		this.play2 = new Image(play2, 90, 90, false, true);
->>>>>>> refs/remotes/origin/Mark
+		this.ok = new Image(ok, 90, 90, false, true);
+
+	//	this.faceUp = new Image(play, 90, 90, false, true);
+		//this.faceDown = new Image(stop, 90, 90, false, true);
+		//this.play2 = new Image(play2, 90, 90, false, true);
+
 		this.buttonStatus = false;
 		this.controller = controller;
 
