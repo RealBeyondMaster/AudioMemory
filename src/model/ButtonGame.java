@@ -16,6 +16,7 @@ public class ButtonGame extends Button {
 	private Image faceUp;
 	private Image faceDown;
 	private Image play2;
+	private Image ok;
 	private ButtonController controller;
 
 	// button schon angeklickt oder nicht
@@ -34,7 +35,7 @@ public class ButtonGame extends Button {
 		InputStream play = getClass().getResourceAsStream("/image_play.png");
 		InputStream stop = getClass().getResourceAsStream("/image_stop.png");
 		InputStream play2 = getClass().getResourceAsStream("/image_play2.png");
-
+		InputStream ok  = getClass().getResourceAsStream("/image_ok.png");
 		// setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute
 		// Qualität oder nicht
 		Image playButton = new Image(play, 70, 70, false, true);
@@ -46,6 +47,7 @@ public class ButtonGame extends Button {
 		this.faceUp = new Image(play, 70, 70, false, true);
 		this.faceDown = new Image(stop, 70, 70, false, true);
 		this.play2 = new Image(play2, 70, 70, false, true);
+		this.ok = new Image(ok, 70, 70, false, true);
 		this.buttonStatus = false;
 		this.controller = controller;
 
@@ -126,5 +128,12 @@ public class ButtonGame extends Button {
 	// buttonStatus setzten
 	public void setbuttonStatus(boolean status) {
 		this.buttonStatus = status;
+	}
+	
+	//ButtonStatus ok
+	public void setImageOk() {
+		this.setImage(this.ok);
+
+		
 	}
 }

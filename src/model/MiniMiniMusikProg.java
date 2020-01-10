@@ -10,7 +10,7 @@ import javax.sound.midi.Track;
 public class MiniMiniMusikProg {
 
 	// Länge der abzuspielenden Note
-	int length = 2;
+	int length = 5;
 	// Tonhöhe
 	int pitch = 120;
 
@@ -31,7 +31,7 @@ public class MiniMiniMusikProg {
 			Track track = seq.createTrack();
 
 			ShortMessage first = new ShortMessage();
-			first.setMessage(192, 1, 19, 0); // z.B. Klänge: 19,23,26,32,41,44,48,67,88,91,102,109
+			first.setMessage(192, 1, 32, 0); // z.B. Klänge: 19,23,26,32,41,44,48,67,88,91,102,109
 			MidiEvent instrumentWechsel = new MidiEvent(first, 1);
 			track.add(instrumentWechsel);
 
