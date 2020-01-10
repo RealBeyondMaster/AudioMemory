@@ -1,7 +1,7 @@
 package main;
 
 import javafx.application.Application;
-import view.GUI_main;
+import view.GUIMain;
 
 //StartPunkt
 public class Main {
@@ -9,7 +9,7 @@ public class Main {
 	// starte Spiel
 	public static void main(String[] args) throws Exception {
 
-		GUI_main newGame = new GUI_main();
+		GUIMain newGame = new GUIMain();
 		Application.launch(newGame.getClass(), args);
 
 	}
