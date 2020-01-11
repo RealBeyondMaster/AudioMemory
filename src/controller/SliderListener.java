@@ -1,20 +1,14 @@
 package controller;
 
-import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
-public class SliderListener extends Application {
+public class SliderListener extends Slider {
 
-	@Override
-	public void start(Stage stage) {
+	{
 
 		Label label = new Label("Lautstärke:");
 
@@ -46,19 +40,10 @@ public class SliderListener extends Application {
 			}
 		});
 
-		VBox root = new VBox();
-		root.setPadding(new Insets(20));
-		root.setSpacing(10);
-		root.getChildren().addAll(label, slider, infoLabel, infoLabel2);
+//		VBox root = new VBox();
+//		root.setPadding(new Insets(20));
+//		root.setSpacing(10);
+//		root.getChildren().addAll(label, slider, infoLabel, infoLabel2);
 
-		stage.setTitle("JavaFX Slider (o7planning.org)");
-		Scene scene = new Scene(root, 350, 200);
-		stage.setScene(scene);
-		stage.show();
 	}
-
-	public static void main(String[] args) {
-		Application.launch(args);
-	}
-
 }
