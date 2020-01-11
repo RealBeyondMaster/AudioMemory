@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class RandomGen {
 
-	List<Integer> orderOfButtons = new ArrayList<>();
+	ArrayList<Integer> orderOfButtons = new ArrayList<>();
 	ArrayList<Integer> orderTonePitch = new ArrayList<>();
 
 	public RandomGen() {
@@ -15,7 +15,7 @@ public class RandomGen {
 	}
 
 	// gibt eine zufällige Reihenfolge von den Zahlen 0-16 wieder
-	public List<Integer> orderOfButtons() {
+	public ArrayList<Integer> orderOfButtons() {
 
 		for (int i = 0; i < 8; i++) {
 			orderOfButtons.add(i);

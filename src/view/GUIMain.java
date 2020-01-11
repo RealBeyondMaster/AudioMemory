@@ -3,6 +3,7 @@ package view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import controller.ButtonController;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
 import model.ButtonGame;
 import model.RandomGen;
 
-public class GUI_main extends Application {
+public class GUIMain extends Application {
 
 	private Stage primaryStage;
 	private BorderPane mainLayout;
@@ -30,7 +31,7 @@ public class GUI_main extends Application {
 
 	private void showMainView() {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(GUI_main.class.getResource("GUIRadio.fxml"));
+		loader.setLocation(GUIMain.class.getResource("GUIRadio.fxml"));
 		try {
 			mainLayout = loader.load();
 		} catch (IOException e) {
@@ -79,6 +80,7 @@ public class GUI_main extends Application {
 		ArrayList<Integer> rowTotal = new ArrayList<>();
 		rowTotal.addAll(row1);
 		rowTotal.addAll(row1);
+		Collections.shuffle(rowTotal);
 
 		for (int i = 0; i < buttonsToAdd.length; i++) {
 			int tonePitch = rowTotal.get(i); // Ausdruck tonhoehe zu tonepitch ändern

@@ -36,7 +36,6 @@ public class RandomGenTester {
 	@Test
 	public void testKeepElementsInList() {
 		List<Integer> result1 = RandomGen.orderTonePitch();
-		// List<Integer> result2 = RandomGen.orderTonePitch();
 
 		assertEquals(8, result1.size());
 		// assertEquals(8, result1.size());

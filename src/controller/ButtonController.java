@@ -37,6 +37,8 @@ public class ButtonController {
 			if (clickedButton.get(0).getPitch() == clickedButton.get(1).getPitch()) {
 				clickedButton.get(0).setbuttonStatus(true);
 				clickedButton.get(1).setbuttonStatus(true);
+				clickedButton.get(0).setImageOk();
+				clickedButton.get(1).setImageOk();
 				this.clickedButton.clear();
 				System.out.println("ismatchingspairs ist gleich 2");
 
