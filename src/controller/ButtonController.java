@@ -2,14 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 
-import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 import model.ButtonGame;
 
 public class ButtonController {
 
 	private ArrayList<ButtonGame> clickedButton;
-	private int counter;
+	private int counter = 0;
+	JavaFXController setCounter = new JavaFXController();
 
 	public ButtonController() {
 
@@ -20,6 +19,8 @@ public class ButtonController {
 
 	// bei ButtonClick
 	public boolean turnUp(ButtonGame button) {
+		counter++;
+		setCounter.setTextCounter(counter);
 		button.returnImageStop();
 		button.setbuttonStatus(true);
 		if (this.clickedButton.size() < 2)
@@ -46,40 +47,18 @@ public class ButtonController {
 
 			else {
 				System.out.println("ismatchingspairs ist ungleich 2");
-			 clickedButton.get(0).setbuttonStatus(false);
-			 clickedButton.get(1).setbuttonStatus(false);
+				clickedButton.get(0).setbuttonStatus(false);
+				clickedButton.get(1).setbuttonStatus(false);
 
 				clickedButton.get(0).returnImagePlay();
 				clickedButton.get(1).returnImagePlay();
 				this.clickedButton.clear();
-	
 
 			}
 
 		}
 
 		return true;
-
-	}
-
-	/*
-	 * public void actionPerformed(ActionEvent event) { for (int i = 0; i <
-	 * this.clickedButton.size(); i++) { ButtonGame button =
-	 * this.clickedButton.get(i); button.turnDown(); } this.clickedButton.clear(); }
-	 */
-
-	
-/*	public void actionPerformed(ActionEvent event) {
-	*	for (int i = 0; i < clickedButton.size(); i++) {
-	*		ButtonGame button = clickedButton.get(i);
-	*		button.turnDown();
-*
-*		}
-*		this.clickedButton.clear();
-	};*/
-
-	// Zaehlt die Anzahl Clicks
-	public void clickCounter(MouseEvent arg0) {
 
 	}
 

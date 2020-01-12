@@ -40,10 +40,6 @@ public class GUIMain extends Application {
 		}
 		mainLayout.setCenter(showButtons());
 		Scene scene = new Scene(mainLayout);
-		// scene.setCursor(Cursor.HAND); aendert Cursor zu einer Hand
-		// Image image = new Image("Bildschirmfoto%202019-11-28%20um%2010.23.47.png");
-		// // pass in the image path
-		// scene.setCursor(new ImageCursor(image));
 
 		scene.getStylesheets().add("StyleSheetMark2.css"); // StyleSheet von Mark
 		// 12.12.19
@@ -51,17 +47,7 @@ public class GUIMain extends Application {
 		primaryStage.show();
 
 	}
-// mark 30.12.19
-//	private Parent createContent() {
-//		Pane root = new Pane();
-//		root.setPrefSize(600, 600);
-//		return root;
-//	}	
 
-	// Hier muss noch eine For schleife, die alle 16 objekte erstellt. Einmal 8
-	// Objekte, die dann nochmals kopiert wird, was 16 ergibt.
-
-	// mark 30.12.19, mit einer Schleife 2x8 buttons (pro button ein anderer
 	// tonepitch), ergibt 16 buttons
 	public FlowPane showButtons() {
 
@@ -88,10 +74,7 @@ public class GUIMain extends Application {
 			try {
 				ButtonGame newButton = new ButtonGame(controller, tonePitch);
 
-				flowpaneButtons.getChildren().addAll(newButton); // Snene ist falsch, muss das Buttonfeld
-																	// darstellen/generieren
-				// int btnCount = flowpaneButtons.getChildren().size();
-				// flowpaneButtons.getChildren().bind(flowpaneButtons.widthProperty().divide(btnCount));
+				flowpaneButtons.getChildren().addAll(newButton);
 
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block

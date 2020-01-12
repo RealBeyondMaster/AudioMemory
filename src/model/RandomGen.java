@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class RandomGen {
@@ -30,7 +29,7 @@ public class RandomGen {
 	public ArrayList<Integer> orderTonePitch() {
 		for (int i = 0; i < 8; i++) {
 			Random randomGenerator = new Random();
-			int randomInt = randomGenerator.nextInt(60) + 60;
+			int randomInt = randomGenerator.nextInt(50) + 40;
 			orderTonePitch.add(randomInt);
 
 		}
