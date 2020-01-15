@@ -4,12 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import controller.ButtonController;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -20,6 +24,12 @@ public class GUIMain extends Application {
 
 	private Stage primaryStage;
 	private BorderPane mainLayout;
+	private Scene scene;
+	private GUIMain mainApp;
+	@FXML
+	private TextField counter;
+	@FXML
+	private Slider slider;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -39,13 +49,16 @@ public class GUIMain extends Application {
 			e.printStackTrace();
 		}
 		mainLayout.setCenter(showButtons());
-		Scene scene = new Scene(mainLayout);
+
+		this.scene = new Scene(mainLayout);
 		// scene.setCursor(Cursor.HAND); aendert Cursor zu einer Hand
 		// Image image = new Image("Bildschirmfoto%202019-11-28%20um%2010.23.47.png");
 		// // pass in the image path
 		// scene.setCursor(new ImageCursor(image));
+		GUIMain controller = loader.getController();
+		controller.mainApp = this;
 
-		scene.getStylesheets().add("StyleSheetMark2.css"); // StyleSheet von Mark
+		this.scene.getStylesheets().add("StyleSheetMark2.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -76,8 +89,8 @@ public class GUIMain extends Application {
 
 		// Generiere die 8 Tonhöhen zufällig, und dies zweimal
 		RandomGen random = new RandomGen();
-		ArrayList<Integer> row1 = random.orderTonePitch();
-		ArrayList<Integer> rowTotal = new ArrayList<>();
+		List<Integer> row1 = random.orderTonePitch();
+		List<Integer> rowTotal = new ArrayList<>();
 		rowTotal.addAll(row1);
 		rowTotal.addAll(row1);
 		Collections.shuffle(rowTotal);
@@ -113,6 +126,28 @@ public class GUIMain extends Application {
 
 		}
 
+	}
+
+	@FXML
+	private void handleRadioGirl() {
+		System.out.println("handleGirl");
+		mainApp.scene.getStylesheets().clear();
+		mainApp.scene.getStylesheets().add("StyleSheetMark3.css");
+	}
+
+	@FXML
+	private void handleRadioBoy() {
+		System.out.println("handleBoy");
+		mainApp.scene.getStylesheets().clear();
+		// this.scene.getStylesheets().add("StyleSheetMark.css");
+		mainApp.scene.getStylesheets().add("StyleSheetMark.css");
+		counter.setText("1");
+
+	}
+
+	@FXML
+	private void handleSlider() {
+		System.out.println("slider" + slider.getValue());
 	}
 
 //	private void showButtons() throws IOException {

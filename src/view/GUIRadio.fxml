@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GUIMain">
    <top>
       <MenuBar prefHeight="44.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <menus>
@@ -30,11 +30,11 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-                  <RadioMenuItem mnemonicParsing="false" selected="true" text="Girls Theme">
+                  <RadioMenuItem mnemonicParsing="false" onAction="#handleRadioGirl" selected="true" text="Girls Theme">
                      <toggleGroup>
                         <ToggleGroup fx:id="toggleGroup1" />
                      </toggleGroup></RadioMenuItem>
-                  <RadioMenuItem mnemonicParsing="false" text="Boys Theme" toggleGroup="$toggleGroup1" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#handleRadioBoy" text="Boys Theme" toggleGroup="$toggleGroup1" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -51,7 +51,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="158.0" prefWidth="150.0">
                <children>
                   <Label layoutX="16.0" layoutY="91.0" text="Zähler" AnchorPane.leftAnchor="16.0" />
-                  <TextField layoutX="8.0" layoutY="119.0" prefHeight="24.0" prefWidth="57.0" AnchorPane.leftAnchor="8.0" />
+                  <TextField fx:id="counter" layoutX="8.0" layoutY="119.0" prefHeight="24.0" prefWidth="57.0" AnchorPane.leftAnchor="8.0" />
                </children>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -71,7 +71,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="458.0">
                <children>
-                  <Slider blockIncrement="1.0" layoutX="26.0" layoutY="20.0" majorTickUnit="15.0" max="127.0" min="60.0" minorTickCount="3" prefHeight="19.0" prefWidth="329.0" snapToTicks="true" value="94.0">
+                  <Slider fx:id="slider" blockIncrement="1.0" layoutX="26.0" layoutY="20.0" majorTickUnit="15.0" max="127.0" min="60.0" minorTickCount="3" onMouseClicked="#handleSlider" onSwipeLeft="#handleSlider" onSwipeRight="#handleSlider" prefHeight="19.0" prefWidth="329.0" snapToTicks="true" value="94.0">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>
