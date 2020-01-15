@@ -5,6 +5,9 @@
      -fx-font-family: "Ayuthya";
      -fx-base: #F4EAEA;     
  }
+.menu-bar {
+    -fx-background-color: #F5A9E1;
+}
 
 
  .label{

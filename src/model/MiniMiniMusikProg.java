@@ -7,12 +7,16 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 
+import javafx.scene.control.Slider;
+
 public class MiniMiniMusikProg {
 
 	// Länge der abzuspielenden Note
-	int length = 5;
+	int length = 10;
+	private Slider slider;
 	// Tonhöhe
-	int pitch = 120;
+	// int pitch = 120;
+	// int pitch = (int) this.slider.getValue();
 
 	// Konstruktor
 	public MiniMiniMusikProg() {
@@ -23,7 +27,7 @@ public class MiniMiniMusikProg {
 		try {
 
 			Sequencer player = MidiSystem.getSequencer();
-			player.setTempoInBPM(200); // damit kann die Tonlänge als Faktor global verändert weren
+			player.setTempoInBPM(50); // damit kann die Tonlänge als Faktor global verändert weren
 			player.open();
 
 			Sequence seq = new Sequence(Sequence.PPQ, 4);
@@ -31,7 +35,7 @@ public class MiniMiniMusikProg {
 			Track track = seq.createTrack();
 
 			ShortMessage first = new ShortMessage();
-			first.setMessage(192, 1, 32, 0); // z.B. Klänge: 19,23,26,32,41,44,48,67,88,91,102,109
+			first.setMessage(192, 1, 41, 0); // z.B. Klänge: gut:19,23,26,Default:32,41,44,48,67,88,91,102,109
 			MidiEvent instrumentWechsel = new MidiEvent(first, 1);
 			track.add(instrumentWechsel);
 

@@ -58,7 +58,7 @@ public class GUIMain extends Application {
 		GUIMain controller = loader.getController();
 		controller.mainApp = this;
 
-		this.scene.getStylesheets().add("StyleSheetMark2.css"); // StyleSheet von Mark
+		this.scene.getStylesheets().add("styleSheetGirl.css"); // StyleSheet von Mark
 		// 12.12.19
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -132,7 +132,7 @@ public class GUIMain extends Application {
 	private void handleRadioGirl() {
 		System.out.println("handleGirl");
 		mainApp.scene.getStylesheets().clear();
-		mainApp.scene.getStylesheets().add("StyleSheetMark3.css");
+		mainApp.scene.getStylesheets().add("styleSheetGirl.css");
 	}
 
 	@FXML
@@ -140,7 +140,7 @@ public class GUIMain extends Application {
 		System.out.println("handleBoy");
 		mainApp.scene.getStylesheets().clear();
 		// this.scene.getStylesheets().add("StyleSheetMark.css");
-		mainApp.scene.getStylesheets().add("StyleSheetMark.css");
+		mainApp.scene.getStylesheets().add("styleSheetBoy.css");
 		counter.setText("1");
 
 	}
