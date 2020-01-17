@@ -35,7 +35,7 @@ public class MiniMiniMusikProg {
 			Track track = seq.createTrack();
 
 			ShortMessage first = new ShortMessage();
-			first.setMessage(192, 1, 41, 0); // z.B. Klänge: gut:19,23,26,Default:32,41,44,48,67,88,91,102,109
+			first.setMessage(192, 1, 91, 0); // z.B. Klänge: gut:19,23,26,Default:32,41,44,48,67,88,sehrgut91,102,109
 			MidiEvent instrumentWechsel = new MidiEvent(first, 1);
 			track.add(instrumentWechsel);
 
