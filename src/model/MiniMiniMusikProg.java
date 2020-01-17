@@ -10,7 +10,7 @@ import javax.sound.midi.Track;
 public class MiniMiniMusikProg {
 
 	// Länge der abzuspielenden Note
-	int length = 10;
+	int length = 100;
 
 	// int pitch = (int) this.slider.getValue();
 

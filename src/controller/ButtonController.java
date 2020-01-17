@@ -2,17 +2,16 @@ package controller;
 
 import java.util.ArrayList;
 
-import javafx.scene.input.MouseEvent;
 import model.ButtonGame;
 
 public class ButtonController {
 
 	private ArrayList<ButtonGame> clickedButton;
-	private int counter;
+
 
 	public ButtonController() {
 
-		this.counter = 0;
+
 		this.clickedButton = new ArrayList<ButtonGame>(0);
 
 	}
@@ -61,14 +60,6 @@ public class ButtonController {
 
 	}
 
-	// Zaehlt die Anzahl Clicks
-	public void clickCounter(MouseEvent arg0) {
 
-	}
-
-	// Verändert die Tonlänge
-	public void toneLength(int toneLength) {
-
-	}
 
 }
