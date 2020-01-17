@@ -61,20 +61,6 @@ public class ButtonController {
 
 	}
 
-	/*
-	 * public void actionPerformed(ActionEvent event) { for (int i = 0; i <
-	 * this.clickedButton.size(); i++) { ButtonGame button =
-	 * this.clickedButton.get(i); button.turnDown(); } this.clickedButton.clear(); }
-	 */
-
-	/*
-	 * public void actionPerformed(ActionEvent event) { for (int i = 0; i <
-	 * clickedButton.size(); i++) { ButtonGame button = clickedButton.get(i);
-	 * button.turnDown();
-	 *
-	 * } this.clickedButton.clear(); };
-	 */
-
 	// Zaehlt die Anzahl Clicks
 	public void clickCounter(MouseEvent arg0) {
 

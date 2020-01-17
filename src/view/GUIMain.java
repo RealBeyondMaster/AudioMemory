@@ -12,6 +12,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -30,6 +31,8 @@ public class GUIMain extends Application {
 	private TextField counter;
 	@FXML
 	private Slider slider;
+	@FXML
+	private MenuItem about;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -148,6 +151,17 @@ public class GUIMain extends Application {
 	@FXML
 	private void handleSlider() {
 		System.out.println("slider" + slider.getValue());
+	}
+
+	@FXML
+	private void getSliderValue() {
+		System.out.println("slider" + slider.getValue());
+	}
+
+	@FXML
+	private void openHelpAbout() {
+		System.out.println("openHelpAbout");
+
 	}
 
 //	private void showButtons() throws IOException {

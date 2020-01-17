@@ -7,15 +7,11 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 
-import javafx.scene.control.Slider;
-
 public class MiniMiniMusikProg {
 
 	// Länge der abzuspielenden Note
 	int length = 10;
-	private Slider slider;
-	// Tonhöhe
-	// int pitch = 120;
+
 	// int pitch = (int) this.slider.getValue();
 
 	// Konstruktor
@@ -23,7 +19,7 @@ public class MiniMiniMusikProg {
 
 	}
 
-	public void player(int tonePitch) {
+	public void playTone(int tonePitch) {
 		try {
 
 			Sequencer player = MidiSystem.getSequencer();
@@ -42,7 +38,7 @@ public class MiniMiniMusikProg {
 			ShortMessage a = new ShortMessage();
 
 			// a.setMessage(192, 1, 35, 0);// Möglichkeit, zum Instrumenten-Wechsel
-			a.setMessage(144, 1, tonePitch, 70);// Message-Tup(hier Note-On), Kanal, zu spielender Ton,
+			a.setMessage(144, 1, tonePitch, 70);// Message-Typ(hier Note-On), Kanal, zu spielender Ton,
 												// Anschlaglautstärte
 
 			MidiEvent noteOn = new MidiEvent(a, 1);
@@ -64,8 +60,5 @@ public class MiniMiniMusikProg {
 		}
 
 	}
-	// diesen Text habe ich heute, 20. 11.19, gepusht
-	// public static void main(String[] args) {
-	// MiniMiniMusikProg mini = new MiniMiniMusikProg();
-	// mini.player(60);
+
 }

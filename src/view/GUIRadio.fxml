@@ -39,7 +39,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#openHelpAbout" text="About" />
             </items>
           </Menu>
         </menus>
@@ -71,7 +71,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="458.0">
                <children>
-                  <Slider fx:id="slider" blockIncrement="1.0" layoutX="26.0" layoutY="20.0" majorTickUnit="15.0" max="127.0" min="60.0" minorTickCount="3" onMouseClicked="#handleSlider" onSwipeLeft="#handleSlider" onSwipeRight="#handleSlider" prefHeight="19.0" prefWidth="329.0" snapToTicks="true" value="94.0">
+                  <Slider fx:id="slider" blockIncrement="1.0" layoutX="26.0" layoutY="20.0" majorTickUnit="15.0" max="127.0" min="50.0" minorTickCount="3" onMouseClicked="#handleSlider" onSwipeLeft="#handleSlider" onSwipeRight="#handleSlider" prefHeight="19.0" prefWidth="329.0" snapToTicks="true" value="94.0">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor>

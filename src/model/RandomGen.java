@@ -7,15 +7,15 @@ import java.util.Random;
 
 public class RandomGen {
 
-	private List<Integer> orderOfButtons;// das hier ist geändert, neu auch private
-	private List<Integer> orderTonePitch;// das hier ist geändert, neu auch private
+	private List<Integer> orderOfButtons;
+	private List<Integer> orderTonePitch;
 
 	public RandomGen() {
-		orderOfButtons = new ArrayList<>();// das hier ist neu
-		orderTonePitch = new ArrayList<>();// das hier ist neu
+		orderOfButtons = new ArrayList<>();
+		orderTonePitch = new ArrayList<>();
 	}
 
-	// gibt eine zufällige Reihenfolge von den Zahlen 0-16 wieder
+	// gibt eine zufällige Reihenfolge von den Zahlen 0-7 wieder
 	public List<Integer> orderOfButtons() {
 
 		for (int i = 0; i < 8; i++) {
@@ -27,11 +27,11 @@ public class RandomGen {
 		return orderOfButtons;
 	}
 
-	// gibt eine zugällige Liste von 8 Zahlen zurück zwischen 60 und 120
+	// gibt eine zugällige Liste von 8 Zahlen zurück zwischen 50 und 100
 	public List<Integer> orderTonePitch() {
 		for (int i = 0; i < 8; i++) {
 			Random randomGenerator = new Random();
-			int randomInt = randomGenerator.nextInt(61) + 60;
+			int randomInt = randomGenerator.nextInt(51) + 50;
 			orderTonePitch.add(randomInt);
 
 		}

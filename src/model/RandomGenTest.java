@@ -25,16 +25,6 @@ public class RandomGenTest {
 		randomGen = null;
 	}
 
-	// @Test
-	// public void test() {
-	// fail("Not yet implemented");
-	// }
-
-	// @Test
-	// public void test2() {
-	// assertEquals(expected, actual);
-	// }
-
 	@Test
 	public void testKeepElementsInList() {
 		List<Integer> result1 = randomGen.orderTonePitch();
@@ -59,9 +49,8 @@ public class RandomGenTest {
 		assertNotNull(randomGen.orderOfButtons());
 	}
 
-//	 Werte des Arrays aus (gut zur Kontrolle, ob zw. )
 	@Test
-	public void testTonePitchBetween60and120() {
+	public void testTonePitchBetween50and100() {
 		// Eine Liste mit 1000 Listen mit jeweils 8 Zahlen erstellen. Diese Zahlen
 		// müssen
 		// zwischen 60 und 120 sein.
@@ -77,10 +66,15 @@ public class RandomGenTest {
 			for (Integer randomNumber : randomNumbers) {
 				// System.out.println(randomNumber);
 
-				assertTrue(randomNumber >= 60);// testet den unteren Rand
-				assertTrue(randomNumber <= 120);// testet den oberen Rand
+				assertTrue(randomNumber >= 50);// testet den unteren Rand
+				assertTrue(randomNumber <= 100);// testet den oberen Rand
 			}
 
 		}
 	}
+	// @Test
+	// public void test() {
+	// fail("Not yet implemented");
+	// }
+
 }

@@ -27,32 +27,21 @@ public class ButtonGame extends Button {
 
 	// Konstruktor
 	public ButtonGame(ButtonController controller, int tonePitch) throws FileNotFoundException {
-		// ImageView b = new ImageView(input);
 
-		// back = new
-		// ImageView(String.valueOf(getClass().getResource("image_play.png")));
 		this.tonePitch = tonePitch;
 		InputStream play = getClass().getResourceAsStream("/image_play.png");
 		InputStream stop = getClass().getResourceAsStream("/image_stop.png");
 		InputStream play2 = getClass().getResourceAsStream("/image_play2.png");
-		InputStream ok  = getClass().getResourceAsStream("/image_ok.png");
-		// setzt Pixelgrösse fest, boolean: Ratio behalten oder nicht, boolean: Gute
-		// Qualität oder nicht
+		InputStream ok = getClass().getResourceAsStream("/image_ok.png");
+
 		Image playButton = new Image(play, 90, 90, false, true);
-		// Image stopButton = new Image(stop, 70, 70, false, true);
 
-		// Button b = new Button("play");
 		setGraphic(new ImageView(playButton));
-
 
 		this.faceUp = new Image(play, 90, 90, false, true);
 		this.faceDown = new Image(stop, 90, 90, false, true);
 		this.play2 = new Image(play2, 90, 90, false, true);
 		this.ok = new Image(ok, 90, 90, false, true);
-
-	//	this.faceUp = new Image(play, 90, 90, false, true);
-		//this.faceDown = new Image(stop, 90, 90, false, true);
-		//this.play2 = new Image(play2, 90, 90, false, true);
 
 		this.buttonStatus = false;
 		this.controller = controller;
@@ -65,14 +54,10 @@ public class ButtonGame extends Button {
 	// ändere das Bild und spiele die Tonhoehe
 	public void turnUp() {
 
-		player.player(this.getPitch());
+		player.playTone(this.getPitch());
 		System.out.println("turnup 1");
-		// this.setImage(this.faceDown);
-		// this.buttonStatus = this.controller.turnUp(this);
+
 		this.controller.turnUp(this);
-		// if (this.buttonStatus) {
-		/// System.out.println("turnup 1");
-		// this.setImage(this.faceDown);
 
 		return;
 
@@ -84,13 +69,6 @@ public class ButtonGame extends Button {
 		this.buttonStatus = false;
 
 	}
-
-	/*
-	 * Eventhandler für Mausklicks EventHandler<MouseEvent> cardClicked = new
-	 * EventHandler<MouseEvent>() {
-	 * 
-	 * @Override public void handle(MouseEvent event) { turnUp(); } };
-	 */
 
 	// Get tonePitch Methode
 	public int getPitch() {
@@ -104,16 +82,16 @@ public class ButtonGame extends Button {
 		public void handle(ActionEvent event) {
 
 			if (buttonStatus)
-				return;
+				return; // buttonStatus = true;
 			else {
 				turnUp();
-				// buttonStatus = true;
+
 			}
 		}
 
 	}
 
-	// Funktion um Bild zu wechselb
+	// Funktion um Bild zu wechseln
 	public void setImage(Image newState) {
 		setGraphic(new ImageView(newState));
 		System.out.println("setimage methode");
@@ -122,24 +100,21 @@ public class ButtonGame extends Button {
 	public void returnImagePlay() {
 		this.setImage(this.play2);
 		System.out.println("returnimagePlay");
-		// this.buttonStatus = false;
 	}
 
 	public void returnImageStop() {
 		this.setImage(this.faceDown);
 		System.out.println("returnimageStop");
-		// this.buttonStatus = false;
 	}
 
-	// buttonStatus setzten
+	// buttonStatus setzen
 	public void setbuttonStatus(boolean status) {
 		this.buttonStatus = status;
 	}
-	
-	//ButtonStatus ok
+
+	// ButtonStatus ok
 	public void setImageOk() {
 		this.setImage(this.ok);
 
-		
 	}
 }
