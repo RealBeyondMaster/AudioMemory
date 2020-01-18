@@ -30,7 +30,7 @@ public class RandomGenTest {
 		List<Integer> result1 = randomGen.orderTonePitch();
 
 		assertEquals(8, result1.size());
-		// assertEquals(8, result1.size());
+
 	}
 
 	// @Test(timeout = 1) beschränkt die Testzeit auf 1 Millisekunde, meldet Fehler,
@@ -40,13 +40,6 @@ public class RandomGenTest {
 	public void test2OrderTonePitch() {
 
 		assertNotNull(randomGen.orderTonePitch());
-	}
-
-	// testet, ob ein return von orderOfButtons stattfindet
-	@Test(timeout = 1)
-	public void testNumbersOfButtonsNotNull() {
-
-		assertNotNull(randomGen.orderOfButtons());
 	}
 
 	@Test
@@ -66,15 +59,12 @@ public class RandomGenTest {
 			for (Integer randomNumber : randomNumbers) {
 				// System.out.println(randomNumber);
 
-				assertTrue(randomNumber >= 50);// testet den unteren Rand
-				assertTrue(randomNumber <= 100);// testet den oberen Rand
-			}
+				// testet den unteren Rand und oberen Rand
+				assertTrue(randomNumber >= 50);
+				assertTrue(randomNumber <= 100);			}
 
 		}
 	}
-	// @Test
-	// public void test() {
-	// fail("Not yet implemented");
-	// }
+
 
 }
