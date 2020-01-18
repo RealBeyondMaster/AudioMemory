@@ -33,9 +33,5 @@ public class ButtonControllerTest {
 
 	}
 
-//	@Test
-//	public void isMatchingPairstest() {
-//		this.clickedButton = new ArrayList<ButtonGame>(1);
-//	}
 
 }
