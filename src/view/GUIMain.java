@@ -1,3 +1,17 @@
+/**
+ * 
+ * Die Hauptklasse für die grafische Oberfläche und die wichtigste Klasse für das View Packet.
+ * Ein grosser Teil wurde mit Hilfde von SceneBuilder erstellt.
+ * Hier werden die ButtonGame Objekte erstellt und in eine Flowpane eingefügt.
+ * 
+ * Wie erwähnt sind der Slider und der Counter noch nicht funktionitüchtig, aufgrund
+ * des Controllers von Scenebuilder und dessen Aufbau und unserem mangelndem Verständnis.
+ * 
+ * 
+ * 
+ * 
+ */
+
 package view;
 
 import java.io.FileNotFoundException;
@@ -54,31 +68,19 @@ public class GUIMain extends Application {
 		mainLayout.setCenter(showButtons());
 
 		this.scene = new Scene(mainLayout);
-		// scene.setCursor(Cursor.HAND); aendert Cursor zu einer Hand
-		// Image image = new Image("Bildschirmfoto%202019-11-28%20um%2010.23.47.png");
-		// // pass in the image path
-		// scene.setCursor(new ImageCursor(image));
+		
 		GUIMain controller = loader.getController();
 		controller.mainApp = this;
 
-		this.scene.getStylesheets().add("styleSheetGirl.css"); // StyleSheet von Mark
-		// 12.12.19
+		this.scene.getStylesheets().add("styleSheetGirl.css"); 
+		
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
-// mark 30.12.19
-//	private Parent createContent() {
-//		Pane root = new Pane();
-//		root.setPrefSize(600, 600);
-//		return root;
-//	}	
 
-	// Hier muss noch eine For schleife, die alle 16 objekte erstellt. Einmal 8
-	// Objekte, die dann nochmals kopiert wird, was 16 ergibt.
-
-	// mark 30.12.19, mit einer Schleife 2x8 buttons (pro button ein anderer
-	// tonepitch), ergibt 16 buttons
+	// Methode, um Objekte von ButtonGame zu erstellen, und dies 8 Mal, und dann zu
+	// verdoppeln
 	public FlowPane showButtons() {
 
 		int buttonsToAdd[] = new int[16];
@@ -86,6 +88,8 @@ public class GUIMain extends Application {
 			buttonsToAdd[2 * i] = i;
 			buttonsToAdd[2 * i + 1] = i;
 		}
+
+		// randomisere die Reihenfolge der Zahlen/Position der Objekte
 		randomizeButtonArray(buttonsToAdd);
 		FlowPane flowpaneButtons = new FlowPane();
 		ButtonController controller = new ButtonController();
@@ -94,23 +98,24 @@ public class GUIMain extends Application {
 		RandomGen random = new RandomGen();
 		List<Integer> row1 = random.orderTonePitch();
 		List<Integer> rowTotal = new ArrayList<>();
+		// Hier werden die 8 Töne zweimal in ein Array eingespiesen, damit es jeweils
+		// eine Kopie gibt
 		rowTotal.addAll(row1);
 		rowTotal.addAll(row1);
 		Collections.shuffle(rowTotal);
 
+		// Generiere die 16 Objekte, übergebe jedesmal einen Controller und eine
+		// zufällig generierte Tonhöhe (int) als Parameter
 		for (int i = 0; i < buttonsToAdd.length; i++) {
-			int tonePitch = rowTotal.get(i); // Ausdruck tonhoehe zu tonepitch ändern
+			int tonePitch = rowTotal.get(i); 
 
 			try {
 				ButtonGame newButton = new ButtonGame(controller, tonePitch);
 
-				flowpaneButtons.getChildren().addAll(newButton); // Snene ist falsch, muss das Buttonfeld
-																	// darstellen/generieren
-				// int btnCount = flowpaneButtons.getChildren().size();
-				// flowpaneButtons.getChildren().bind(flowpaneButtons.widthProperty().divide(btnCount));
+				flowpaneButtons.getChildren().addAll(newButton);
 
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 
@@ -119,6 +124,7 @@ public class GUIMain extends Application {
 		return flowpaneButtons;
 	}
 
+	//Methode, um die Reihenfolge der Buttons zu randomiseren
 	private void randomizeButtonArray(int[] t) {
 		Random randomizer = new Random();
 		for (int i = 0; i < t.length; i++) {
@@ -131,6 +137,8 @@ public class GUIMain extends Application {
 
 	}
 
+	
+	//Methoden, um das CSS zu wechseln
 	@FXML
 	private void handleRadioGirl() {
 		System.out.println("handleGirl");
@@ -148,6 +156,8 @@ public class GUIMain extends Application {
 
 	}
 
+	
+	//Methoden für den Slider, nichts funktionstüchtig, resp. machen noch nichts.
 	@FXML
 	private void handleSlider() {
 		System.out.println("slider" + slider.getValue());
@@ -164,14 +174,8 @@ public class GUIMain extends Application {
 
 	}
 
-//	private void showButtons() throws IOException {
-//
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(getClass().getResource("Buttons.fxml"));
-//		// for (i=0 )
-//		FlowPane buttons = loader.load();
-//		mainLayout.setCenter(buttons);
-
+	
+	//Start Methode
 	public static void main(String[] args) {
 
 		launch(args);

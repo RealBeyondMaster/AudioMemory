@@ -1,31 +1,30 @@
+/**
+ * 
+ * Die Klasse RandomGen mi Zt derm Methode orderTonePitch gibt
+ * eine List<Integer> mit 8 Zahlen zwischen 50 und 100 zurück, welche als Tonhöhe 
+ * für die Klasse ButtonGame fungieren. 
+ * 
+ * 
+ * 
+ */
+
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class RandomGen {
 
-	private List<Integer> orderOfButtons;
+
 	private List<Integer> orderTonePitch;
 
 	public RandomGen() {
-		orderOfButtons = new ArrayList<>();
+
 		orderTonePitch = new ArrayList<>();
 	}
 
-	// gibt eine zufällige Reihenfolge von den Zahlen 0-7 wieder
-	public List<Integer> orderOfButtons() {
 
-		for (int i = 0; i < 8; i++) {
-			orderOfButtons.add(i);
-
-		}
-
-		Collections.shuffle(orderOfButtons);
-		return orderOfButtons;
-	}
 
 	// gibt eine zugällige Liste von 8 Zahlen zurück zwischen 50 und 100
 	public List<Integer> orderTonePitch() {

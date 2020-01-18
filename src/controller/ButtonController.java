@@ -1,3 +1,22 @@
+
+/** ButtonController  
+ *  
+ * Der ButtonCtontroller hat einen Button Array, welche benötigt wird, um auf 2 zu zählen.
+ * Jedesmal, wenn ein Button angeklickt wird, wird der Controller aufgerufen und der Button wird übergeben.
+ * Dieser kommt in den Array. 
+ * Ist nur ein Button im Array, wird passiert noch nichts.
+ * Falls es dann zwei Buttons im Array sind, werden diese miteinander verlglichen.
+ * Sind die Tonhöhen der Buttons nicht identisch, werden Sie zurückgesetz, und der Array wird geleert.
+ * 
+ * Sind die Tonhöhen identisch, wird das Bild auf "OK" gesetzt, und der Status des Button bleibt auf "aufgedeckt" (boolean).
+ * Der Array wird geleert.
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
 package controller;
 
 import java.util.ArrayList;
@@ -8,15 +27,17 @@ public class ButtonController {
 
 	private ArrayList<ButtonGame> clickedButton;
 
-
 	public ButtonController() {
-
 
 		this.clickedButton = new ArrayList<ButtonGame>(0);
 
 	}
 
-	// bei ButtonClick
+	/*
+	 * bei ButtonClick wird der Button entgegen genommen und in das Array gesetzt.
+	 * Sind es zwei Buttons im Array, werden die die Buttons weitergegeben an die
+	 * nächste Methode, isMatchingParis.
+	 */
 	public boolean turnUp(ButtonGame button) {
 		button.returnImageStop();
 		button.setbuttonStatus(true);
@@ -26,10 +47,11 @@ public class ButtonController {
 			return true;
 	}
 
-	// Vergleicht, ob nach 2 clicks angeklickte Buttons(Tonhöhe) dieselben sind
-	// oder nicht.
-	public boolean isMatchingPairs(ButtonGame button) {// auf public gewechselt,damit in der Testklasse sichbar(dort
-														// Zeile28)
+	/*
+	 * Vergleicht, ob nach 2 clicks angeklickte Buttons(Tonhöhe) dieselben sind oder
+	 * nicht. Passt entsprechend die Bilder und den Status der Buttons nochmals an.
+	 */
+	public boolean isMatchingPairs(ButtonGame button) {
 		this.clickedButton.add(button);
 		if (this.clickedButton.size() == 2) {
 
@@ -59,7 +81,5 @@ public class ButtonController {
 		return true;
 
 	}
-
-
 
 }
