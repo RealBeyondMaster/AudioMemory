@@ -1,24 +1,3 @@
-/**
- * 
- * ButtonGame ist als Model die wichtigste Klasse.
- * ButtonGame, kurz BG, vererbt von Button von JavaFX.
- * Wir haben zusätzliche Methoden eingebaut, um Bilder zu setzten.
- * Zudem gibt es einen Status (boolean) ButtonStatus. Ist dieser false, ist die Karte "verborgen".
- * Ist die Karte aufgedeckt, wird der Status true und das Bild ändert sich. Wurden zwei gleiche Klänge gefunden, bleibt
- * der Status true und das Bild verändert sich zu "ok" und verändert sich auch nicht mehr.
- * Die Bilder werden importiert.
- * 
- * Die Klasse ButtonController wird importiert und übergeben als Parameter.
- * Zusätlzlich wird noch die Klasse MiniMiniMusikProg importiert, um die Tonhöhe zu übergeben 
- * und den Klang zu erzeugen.
- *
- * ES gibt die Methode turnUp, welche durch den EventHandler aufgeruden wird, sobald ein BG angeklickt wurde. 
- * Dann wird auch der Button an den Controller übergeben.
- * Die Methode playTone ist vom MiniMiniMusikProg und spielt dann den Ton ab.
- * 
- */
-
-
 package model;
 
 import java.io.FileNotFoundException;
@@ -31,6 +10,25 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * @author Bright ButtonGame ist als Model die wichtigste Klasse. ButtonGame,
+ *         kurz BG, vererbt von Button von JavaFX. Wir haben zusätzliche
+ *         Methoden eingebaut, um Bilder zu setzten. Zudem gibt es einen Status
+ *         (boolean) ButtonStatus. Ist dieser false, ist die Karte "verborgen".
+ *         Ist die Karte aufgedeckt, wird der Status true und das Bild ändert
+ *         sich. Wurden zwei gleiche Klänge gefunden, bleibt der Status true und
+ *         das Bild verändert sich zu "ok" und verändert sich auch nicht mehr.
+ *         Die Bilder werden importiert.
+ * 
+ *         Die Klasse ButtonController wird importiert und übergeben als
+ *         Parameter. Zusätlzlich wird noch die Klasse MiniMiniMusikProg
+ *         importiert, um die Tonhöhe zu übergeben und den Klang zu erzeugen.
+ *
+ *         Es gibt die Methode turnUp, welche durch den EventHandler aufgeruden
+ *         wird, sobald ein BG angeklickt wurde. Dann wird auch der Button an
+ *         den Controller übergeben. Die Methode playTone ist vom
+ *         MiniMiniMusikProg und spielt dann den Ton ab.
+ */
 public class ButtonGame extends Button {
 
 	private int tonePitch;
@@ -70,9 +68,10 @@ public class ButtonGame extends Button {
 		setOnAction(new ButtonListener());
 	};
 
-	// bei Mausklick, checke ob bereits geklickt. Wenn ja, tue nichts. Wenn noch
-	// nicht geklickt
-	// ändere das Bild und spiele die Tonhoehe
+	/**
+	 * bei Mausklick, checke ob bereits geklickt. Wenn ja, tue nichts. Wenn noch
+	 * nicht geklickt ändere das Bild und spiele die Tonhoehe
+	 */
 	public void turnUp() {
 
 		player.playTone(this.getPitch());
@@ -84,7 +83,9 @@ public class ButtonGame extends Button {
 
 	}
 
-	// Kartenstatus wieder "abdecken" und Bild entsprechend wechseln
+	/**
+	 * Kartenstatus wieder "abdecken" und Bild entsprechend wechseln
+	 */
 	public void turnDown() {
 		System.out.println("turdown 1");
 		this.setImage(this.faceUp);
@@ -92,13 +93,21 @@ public class ButtonGame extends Button {
 
 	}
 
-	// Get tonePitch Methode
+	/**
+	 * Get tonePitch Methode
+	 * 
+	 * @return
+	 */
 	public int getPitch() {
 		return tonePitch;
 
 	}
 
-	//Eventhandler für den Klick des Objektes von BG
+	/**
+	 * Eventhandler für den Klick des Objektes von BG
+	 * 
+	 * @author
+	 */
 	class ButtonListener implements EventHandler<ActionEvent> {
 
 		@Override
@@ -114,30 +123,44 @@ public class ButtonGame extends Button {
 
 	}
 
-	// Methode um Bild zu wechseln
+	/**
+	 * Methode um Bild zu wechseln
+	 * 
+	 * @param newState (Bild)
+	 */
 	public void setImage(Image newState) {
 		setGraphic(new ImageView(newState));
 		System.out.println("setimage methode");
 	}
-	
-	//Methode um Bild zu wechseln
+
+	/**
+	 * Methode um Bild zu wechseln
+	 */
 	public void returnImagePlay() {
 		this.setImage(this.play2);
 		System.out.println("returnimagePlay");
 	}
-	
-	//Methode um Bild zu wechseln
+
+	/**
+	 * Methode um Bild zu wechseln
+	 */
 	public void returnImageStop() {
 		this.setImage(this.faceDown);
 		System.out.println("returnimageStop");
 	}
 
-	// buttonStatus wechseln, boolean
+	/**
+	 * buttonStatus wechseln, boolean
+	 * 
+	 * @param status
+	 */
 	public void setbuttonStatus(boolean status) {
 		this.buttonStatus = status;
 	}
 
-	// Bild zu "ok" wechseln
+	/**
+	 * Bild zu "ok" wechseln
+	 */
 	public void setImageOk() {
 		this.setImage(this.ok);
 

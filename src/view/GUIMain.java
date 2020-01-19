@@ -1,3 +1,6 @@
+
+package view;
+
 /**
  * 
  * Die Hauptklasse für die grafische Oberfläche und die wichtigste Klasse für das View Packet.
@@ -11,9 +14,6 @@
  * 
  * 
  */
-
-package view;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +35,16 @@ import javafx.stage.Stage;
 import model.ButtonGame;
 import model.RandomGen;
 
+/**
+ * @author Ali und Mark: Die Hauptklasse für die grafische Oberfläche und die
+ *         wichtigste Klasse für das View Packet. Ein grosser Teil wurde mit
+ *         Hilfde von SceneBuilder erstellt. Hier werden die ButtonGame Objekte
+ *         erstellt und in eine Flowpane eingefügt.
+ * 
+ *         Wie erwähnt sind der Slider und der Counter noch nicht
+ *         funktionitüchtig, aufgrund des Controllers von Scenebuilder und
+ *         dessen Aufbau und unserem mangelndem Verständnis.
+ */
 public class GUIMain extends Application {
 
 	private Stage primaryStage;
@@ -48,6 +58,10 @@ public class GUIMain extends Application {
 	@FXML
 	private MenuItem about;
 
+	/**
+	 * Erstellt die gante grafische Oberfläche mit zwei verschiedenen Funktionen.
+	 * Einmal für die normalen Panes, und einmal um die BG Objekte zu erstellen.
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
@@ -68,19 +82,21 @@ public class GUIMain extends Application {
 		mainLayout.setCenter(showButtons());
 
 		this.scene = new Scene(mainLayout);
-		
+
 		GUIMain controller = loader.getController();
 		controller.mainApp = this;
 
-		this.scene.getStylesheets().add("styleSheetGirl.css"); 
-		
+		this.scene.getStylesheets().add("styleSheetGirl.css");
+
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
 	}
 
-	// Methode, um Objekte von ButtonGame zu erstellen, und dies 8 Mal, und dann zu
-	// verdoppeln
+	/**
+	 * Methode, um Objekte von ButtonGame zu erstellen, und dies 8 Mal, und dann zu
+	 * verdoppeln.
+	 */
 	public FlowPane showButtons() {
 
 		int buttonsToAdd[] = new int[16];
@@ -89,25 +105,33 @@ public class GUIMain extends Application {
 			buttonsToAdd[2 * i + 1] = i;
 		}
 
-		// randomisere die Reihenfolge der Zahlen/Position der Objekte
+		/**
+		 * randomisere die Reihenfolge der Zahlen/Position der Objekte
+		 */
 		randomizeButtonArray(buttonsToAdd);
 		FlowPane flowpaneButtons = new FlowPane();
 		ButtonController controller = new ButtonController();
 
-		// Generiere die 8 Tonhöhen zufällig, und dies zweimal
+		/**
+		 * Generiere die 8 Tonhöhen zufällig, und dies zweimal
+		 */
 		RandomGen random = new RandomGen();
 		List<Integer> row1 = random.orderTonePitch();
 		List<Integer> rowTotal = new ArrayList<>();
-		// Hier werden die 8 Töne zweimal in ein Array eingespiesen, damit es jeweils
-		// eine Kopie gibt
+		/**
+		 * Hier werden die 8 Töne zweimal in ein Array eingespiesen, damit es jeweils
+		 * eine Kopie gibt
+		 */
 		rowTotal.addAll(row1);
 		rowTotal.addAll(row1);
 		Collections.shuffle(rowTotal);
 
-		// Generiere die 16 Objekte, übergebe jedesmal einen Controller und eine
-		// zufällig generierte Tonhöhe (int) als Parameter
+		/**
+		 * Generiere die 16 Objekte, übergebe jedesmal einen Controller und eine
+		 * zufällig generierte Tonhöhe (int) als Parameter
+		 */
 		for (int i = 0; i < buttonsToAdd.length; i++) {
-			int tonePitch = rowTotal.get(i); 
+			int tonePitch = rowTotal.get(i);
 
 			try {
 				ButtonGame newButton = new ButtonGame(controller, tonePitch);
@@ -115,7 +139,7 @@ public class GUIMain extends Application {
 				flowpaneButtons.getChildren().addAll(newButton);
 
 			} catch (FileNotFoundException e) {
-				
+
 				e.printStackTrace();
 			}
 
@@ -124,7 +148,11 @@ public class GUIMain extends Application {
 		return flowpaneButtons;
 	}
 
-	//Methode, um die Reihenfolge der Buttons zu randomiseren
+	/**
+	 * Methode, um die Reihenfolge der Buttons zu randomiseren
+	 * 
+	 * @param t
+	 */
 	private void randomizeButtonArray(int[] t) {
 		Random randomizer = new Random();
 		for (int i = 0; i < t.length; i++) {
@@ -137,8 +165,9 @@ public class GUIMain extends Application {
 
 	}
 
-	
-	//Methoden, um das CSS zu wechseln
+	/**
+	 * Methoden, um das CSS zu wechseln
+	 */
 	@FXML
 	private void handleRadioGirl() {
 		System.out.println("handleGirl");
@@ -156,8 +185,9 @@ public class GUIMain extends Application {
 
 	}
 
-	
-	//Methoden für den Slider, nichts funktionstüchtig, resp. machen noch nichts.
+	/**
+	 * Methoden für den Slider, nicht funktionstüchtig, resp. machen noch nichts.
+	 */
 	@FXML
 	private void handleSlider() {
 		System.out.println("slider" + slider.getValue());
@@ -174,8 +204,11 @@ public class GUIMain extends Application {
 
 	}
 
-	
-	//Start Methode
+	/**
+	 * Start Methode
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		launch(args);
